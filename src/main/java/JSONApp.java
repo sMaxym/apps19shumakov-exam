@@ -36,8 +36,38 @@ public class JSONApp {
 
 
     public static JsonObject sessionResult() {
-        JsonObject jsonObject = null;
-        // ToDo
+        JsonObject jsonObject = new JsonObject();
+
+        Json jAndrii = new JsonString("Andrii");
+        Json jRodionov = new JsonString("Rodionov");
+        Json jYear = new JsonNumber(2);
+        JsonPair[] examOop = new JsonPair[] {
+                new JsonPair("course", new JsonString("OOP")),
+                new JsonPair("mark", new JsonNumber(3)),
+                new JsonPair("passed", new JsonBoolean(true))
+        };
+        JsonPair[] examEnglish = new JsonPair[] {
+                new JsonPair("course", new JsonString("English")),
+                new JsonPair("mark", new JsonNumber(5)),
+                new JsonPair("passed", new JsonBoolean(true))
+        };
+        JsonPair[] examMath = new JsonPair[] {
+                new JsonPair("course", new JsonString("Math")),
+                new JsonPair("mark", new JsonNumber(2)),
+                new JsonPair("passed", new JsonBoolean(false))
+        };
+        Json[] jArrExams = new Json[] {
+                new JsonObject(examOop),
+                new JsonObject(examEnglish),
+                new JsonObject(examMath)
+        };
+        Json jExams = new JsonArray(jArrExams);
+
+        jsonObject.add(new JsonPair("name", jAndrii));
+        jsonObject.add(new JsonPair("surname", jRodionov));
+        jsonObject.add(new JsonPair("year", jYear));
+        jsonObject.add(new JsonPair("exams", jExams));
+
         return jsonObject;
     }
 }
